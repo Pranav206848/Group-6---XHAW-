@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ETN | Enrollment</title>
+    <link rel="stylesheet" href="css/total.css">
+    <link rel="shortcut icon" href="favicon/icons8-enrollment-32.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <header>
+      <p class="slogan">EMPOWERING THE NATION</p> 
+      
+      
+      <nav class="navbar">
+        <ul>
+          <li><a href="home.html">Home</a></li>
+          <li><a>6-Month Courses ↓</a>
+        <ul>
+          <li><a href="Firstaid.html">First Aid</a></li>
+          <li><a href="landscaping.html">Landscaping</a></li>
+          <li><a href="sewing.html">Sewing</a></li>
+          <li><a href="lifeskills.html">Life Skills</a></li>
+        </ul>
+    </li>
+          <li><a>6-Weeks Courses ↓</a>
+        <ul>
+
+            <li><a href="childminding.html">Child Minding</a></li>
+            <li><a href="cooking.html">Cooking</a></li>
+            <li><a href="gardening.html">Gardening</a></li>
+        </ul>
+    </li>
+          <li><a href="total.html">Get started</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <body class="body2">
+      <section class="container">
+        <p>Enrollment Form<p>
+        <form action="#" class="form">
+          <form name="enrollment" onsubmit="return validateForm()" action="mailto:
+          pranavramsunder@gmail.com">
+          <div class="input-box">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter full Name" required />
+            <span id="name-error" class="error-message"></span>
+          </div>
+
+          <div class="input-box">
+            <label>Email Address</label>
+            <input type="text" placeholder="Enter email address" required />
+            <span id="email-error" class="error-message"></span>
+          </div>
+
+          <div class="column">
+            <div class="input-box">
+              <label>Phone Number</label>
+              <input type="number" placeholder="Enter phone number" required />
+              <span id="phone-error" class="error-message"></span>
+            </div>
+
+            <div class="input-box">
+              <label>Birth Date</label>
+              <input type="date" placeholder="Enter birth date" />
+              <span id="date-error" class="error-message"></span>
+            </div>
+          </div>
+          
+          <div class="gender-box">
+            <h3>Gender</h3>
+            <div class="gender-option">
+              <div class="gender">
+                <input type="radio" id="check-male" name="gender" checked/>
+                <label for="check-male">Male</label>
+              </div>
+
+              <div class="gender">
+                <input type="radio" id="check-female" name="gender"/>
+                <label for="check-female">Female</label>
+              </div>
+
+              <div class="gender">
+                <input type="radio" id="check-other" name="gender"/>
+                <label for="check-other">Other</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <label>Address</label>
+            <input type="text" placeholder="Enter street address" required/>
+            <span id="address-error" class="error-message"></span>
+            <input type="text" placeholder="Enter your city" required/>
+            <span id="city-error" class="error-message"></span>
+            <input type="text" placeholder="Enter your postal code" required/>
+            <span id="postal-error" class="error-message"></span>
+          </div>
+
+         
+          <div class="course-select">
+            <h3>Course Selection</h3>
+            <label>
+            <input type="checkbox" name="course" value="1500"> First Aid (R 1 500)
+          </label>
+
+          <label>
+            <input type="checkbox" name="course" value="1500"> Landscaping (R 1 500)
+          </label>
+  
+          <label>
+            <input type="checkbox" name="course" value="1500"> Sewing (R 1 500)
+          </label>
+  
+          <label>
+            <input type="checkbox" name="course" value="750"> Life Skills (R 1 500)
+          </label>
+
+          <label>
+            <input type="checkbox" name="course" value="750"> Child Minding (R 750)
+          </label>
+
+          <label>
+            <input type="checkbox" name="course" value="750"> Cooking 4 (R 750)
+          </label>
+
+          <label>
+            <input type="checkbox" name="course" value="750"> Gardening 4 (R 750)
+          </label>
+  
+            <p>Total Fee: <span id="totalFee"></span></p>
+          </div>
+
+          
+
+          <script>
+          function calculateTotal() {
+            const checkedCourses = document.querySelectorAll('input[name="course"]:checked');
+            let total = 0;
+
+            checkedCourses.forEach(course => {
+              total += parseFloat(course.value);
+            });
+
+            let discountPercentage = 0;
+
+            switch (checkedCourses.length) {
+              case 1:
+                discountPercentage = 0;
+                break;
+              case 2:
+                discountPercentage = 0.05;
+                break;
+              case 3:
+                discountPercentage = 0.10;
+                break;
+              case 4:
+                discountPercentage = 0.15;
+            }
+
+            const vatPercentage = 0.15;
+
+            const discountedTotal = total - (total * discountPercentage);
+            const totalWithVAT = discountedTotal + (discountedTotal * vatPercentage);
+
+            document.getElementById('totalFee').innerText = `R${totalWithVAT.toFixed(2)}`;
+          }
+
+
+         
+          document.querySelectorAll('input[name="course"]').forEach(course => {
+
+            course.addEventListener('click', calculateTotal);
+
+          });
+        </script>
+         
+
+            <div class="column">
+            <div class="select-box">
+              <select>
+                <option hidden>Select your preferred Branch</option>
+                <option>ETN | Gold Reef City</option>
+                <option>ETN | Sandton</option>
+                <option>ETN | Morningside</option>
+              </select>
+            </div>
+          </div>
+
+          <button><h4>Submit</h4></button>
+        </form>
+      </section>
+    </body>
+  
+</body>
+</html>
